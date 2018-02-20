@@ -6,11 +6,11 @@
   - виконати node server.js
   - у браузері перейти на localhost:3000
   
-  ..... Screenshots .....
+  ..... Screenshots .....<br>
   
   ![Image alt](https://github.com/Valientin/KPP_lab2_server_Kurzhii/raw/master/img/start_server.PNG)<br>
- Screenshot_1 - запуск сервера.<br>
+ Screenshot_1 - Запуск сервера.<br>
  ![Image alt](https://github.com/Valientin/KPP_lab2_server_Kurzhii/raw/master/img/chat_1.PNG)<br>
- Screenshot_2 - перехід до браузера<br>
+ Screenshot_2 - Перехід до браузера<br>
  ![Image alt](https://github.com/Valientin/KPP_lab2_server_Kurzhii/raw/master/img/chat_2.PNG)<br>
- Screenshot_3 - КОристування чатом<br>
+ Screenshot_3 - Користування чатом<br>
