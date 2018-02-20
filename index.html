@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE = edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Chat</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			outline: none;
+		}
+		body {
+			background: #cecdcd;
+		}
+		.main-title{
+			max-width: 500px;
+			margin: 30px auto;
+			text-align: center;
+			font-size: 20px;
+			color: #fff;
+			text-shadow: 3px 3px 3px #000;
+		}
+		span {
+			color: #dc4d4d;
+			text-shadow: 3px 3px 3px #ef565663;
+		}
+		.input-message{
+			max-width: 400px;
+			width: 100%;
+			padding: 10px;
+			font-size: 18px;
+			border: none;
+			border-radius: 6px;
+		}
+		.form-inline{
+			max-width: 600px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-around;
+		}
+		.btn{
+			padding: 10px 20px;
+			color: #fff;
+			background: #dc4d4d;
+			border: none;
+			border-radius: 6px;
+			font-size: 18px;
+		}
+		#messages {
+			position: relative;
+			max-width: 800px;
+			margin: 40px auto 0;
+			padding: 13px 40px;
+			background: #fff;
+			border: 4px solid #dc4d4d;
+			border-radius: 12px;
+			min-height: 400px;
+		}
+		li{
+			color: #4a4a4a;
+			font-size: 19px;
+			font-weight: 600;
+			padding: 9px 25px;
+			border-radius: 6px;
+			background: #dedbdb;
+			list-style-type: none;
+			margin-bottom: 10px;
+		}
+		h2{
+			text-align: center;
+			padding-bottom: 4px;
+			margin: 0 auto;
+			width: 200px;
+			border-bottom: 7px double;
+			margin-bottom: 15px;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="main-title">
+				<h1>Say your <span>message...</span></h1>
+			</div>
+			<form id="publish" class="form-inline">
+				<input type="text" class="input-message" name="message" />
+				<input type="submit" class="btn" value="Send message!" />
+			</form>
+
+			<ul id="messages">
+				<h2>Message</h2>
+			</ul>
+		</div>
+		<script>
+			publish.onsubmit = function(){ 
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("POST", "/publish", true);
+
+			xhr.send(JSON.stringify({message: this.elements.message.value}));
+
+			this.elements.message.value = '';
+
+			return false;
+		};
+
+		subscribe();
+
+		function subscribe(){
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("GET", "/subscribe", true);
+
+			xhr.onload = function() {
+				var li = document.createElement('li');
+				li.textContent = this.responseText;
+				messages.appendChild(li);
+
+				subscribe();
+			};
+
+			xhr.onerror = xhr.onabort = function() {
+				setTimeout(subscribe, 500);
+			}
+			xhr.send(null);
+		}
+		</script>
+	</body>
+</html>

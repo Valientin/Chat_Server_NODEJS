@@ -1,0 +1,17 @@
+{
+  "name": "first_chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "Valientine",
+  "license": "ISC",
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "url": "^0.11.0"
+  }
+}
